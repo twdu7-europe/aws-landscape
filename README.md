@@ -27,7 +27,7 @@ You can obtain temporary credentials by sourcing `./scripts/okta_aws_login.sh`.
 If you need help determining what parameters to use, please contact your local Okta administrator.
 
 ```
-source ./scripts/okta_aws_login.sh myserver.okta.com abcdefg123456789xyz ripley@example.com
+source ./scripts/okta_aws_login.sh thoughtworks.okta.com <entity id you recieved from techops> <you@thoughtworks.com>
 ```
 
 If you need to then switch into another role, this can be achieved with the AWS CLI.
