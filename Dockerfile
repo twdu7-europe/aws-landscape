@@ -40,7 +40,7 @@ RUN pip install virtualenv
 RUN virtualenv /okta_venv \
         && source /okta_venv/bin/activate \
         && pip install \
-            "aws_role_credentials>=0.6.3" \
+            "aws_role_credentials==0.6.3" \
             "oktaauth>=0.2" \
             "awscli>=1.15"
 
