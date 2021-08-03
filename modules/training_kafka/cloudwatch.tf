@@ -1,4 +1,4 @@
-resource "aws_cloudwatch_kafka_disk_space_saturation_alarm" "kafka_alarm" {
+resource "aws_cloudwatch_metric_alarm" "kafka_disk_space_saturation_alarm" {
   alarm_name                = "kafka-disk-space-saturation"
   comparison_operator       = "GreaterThanOrEqualToThreshold"
   evaluation_periods        = "2"
