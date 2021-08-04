@@ -11,7 +11,6 @@ resource "aws_cloudwatch_metric_alarm" "kafka_disk_space_saturation_alarm" {
   insufficient_data_actions = []
   dimensions = {
     InstanceId = "${aws_instance.kafka.id}"
-    MountPath  = "/"
-    FileSystem = "/dev/xvda1"
+    InstanceType = "${aws_instance.kafka.instance_type}"
   }
 }
