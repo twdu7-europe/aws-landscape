@@ -1,7 +1,7 @@
 # SNS topic to send emails with the Alerts
 resource "aws_sns_topic" "kakfa-alarms" {
   name              = "kafka-alarms-topic"
-  kms_master_key_id = aws_kms_key.sns_encryption_key.id
+  kms_master_key_id = "${aws_kms_key.sns_encryption_key.id}"
   delivery_policy   = <<EOF
 {
   "http": {
