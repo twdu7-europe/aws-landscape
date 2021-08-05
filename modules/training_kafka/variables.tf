@@ -29,3 +29,11 @@ variable "bastion_security_group_id" {
 variable "emr_security_group_id" {
   description = "Id of EMR cluster security group to Kafka & Zookeeper ingress"
 }
+
+variable "aws_region" {
+  description = "AWS Region"
+}
+
+variable "email_alarms" {
+  description = "Email where to send the alarms notifications"
+}

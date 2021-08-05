@@ -12,4 +12,6 @@ resource "aws_cloudwatch_metric_alarm" "kafka_disk_space_saturation_alarm" {
   dimensions = {
     InstanceId = "${aws_instance.kafka.id}"
   }
+  alarm_actions       = [aws_sns_topic.kakfa-alarms.id]
+
 }
