@@ -81,7 +81,7 @@ jobs:
      - checkout
      - run:
          command: source /okta_venv/bin/activate;
-           ./scripts/run_terraform.sh $TRAINING_COHORT training_kafka plan -input=false -auto-approve -var-file=prod-env.tfvars;
+           ./scripts/run_terraform.sh $TRAINING_COHORT training_kafka plan -input=false -var-file=prod-env.tfvars;
 
  applyKafka:
    <<: *defaults
@@ -147,7 +147,7 @@ workflows:
             - approveDestroyKafka
       - planApplyKafka:
           requires:
-            - destroyKafka
+            - dummy
       - approveApplyKafka:
           type: approval
           requires:
