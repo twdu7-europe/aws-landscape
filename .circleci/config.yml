@@ -171,7 +171,7 @@ workflows:
             - approveDestroyIngester
       - planApplyIngester:
           requires:
-            - dummy
+            - destroyIngester
       - approveApplyIngester:
           type: approval
           requires:
