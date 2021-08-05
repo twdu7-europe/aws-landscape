@@ -3,7 +3,7 @@ resource "aws_cloudwatch_metric_alarm" "kafka_disk_space_saturation_alarm" {
   comparison_operator       = "GreaterThanOrEqualToThreshold"
   evaluation_periods        = "2"
   metric_name               = "CPUUtilization"
-  namespace                 = "EC2"
+  namespace                 = "AWS/EC2"
   period                    = "60"
   statistic                 = "Average"
   threshold                 = "0.2"
