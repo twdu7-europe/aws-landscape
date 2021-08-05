@@ -151,7 +151,7 @@ workflows:
       - approveApplyKafka:
           type: approval
           requires:
-            - terraformPlanApplyKafka
+            - planApplyKafka
       - applyKafka:
           requires:
             - approveApplyKafka
