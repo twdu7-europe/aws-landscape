@@ -67,6 +67,15 @@ jobs:
             ./scripts/run_terraform.sh $TRAINING_COHORT bastion destroy -input=false -auto-approve;
             ./scripts/run_terraform.sh $TRAINING_COHORT base_networking destroy -input=false -auto-approve;
 
+  setKafkaRetentionPeriodTo3h:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          command: source /okta_venv/bin/activate;
+            ./scripts/set_kafka_retention_period.sh
+
+
 workflows:
   version: 2
   build:
@@ -112,3 +121,11 @@ workflows:
       - destroyProductionEnvironment:
           requires:
             - approveDestroyProductionEnvironment
+
+      - approveSetKafkaRetentionPeriodTo3h:
+          type: approval
+          requires:
+            - dummy
+      - setKafkaRetentionPeriodTo3h:
+          requires:
+            - approveSetKafkaRetentionPeriodTo3h
