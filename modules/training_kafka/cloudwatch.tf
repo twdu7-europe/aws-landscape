@@ -14,5 +14,5 @@ resource "aws_cloudwatch_metric_alarm" "kafka_disk_space_saturation_alarm" {
     MountPath  = "/"
     Filesystem = "/dev/xvda1"
   }
-  alarm_actions = ["${aws_sns_topic.kakfa-alarms-final.id}"]
+  alarm_actions = ["${aws_sns_topic.kakfa-alarms-sns.id}"]
 }
