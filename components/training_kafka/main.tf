@@ -46,5 +46,5 @@ module "training_kafka" {
   dns_zone_id               = "${data.terraform_remote_state.base_networking.dns_zone_id}"
   instance_type             = "${var.kafka["instance_type"]}"
   aws_region                = "${var.aws_region}"
-  email_alarms              = "javier.m@thoughtworks.com"
+  email_alarms              = "syedalimasroor.r@thoughtworks.com"
 }
