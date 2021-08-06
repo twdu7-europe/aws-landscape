@@ -25,6 +25,8 @@ BASTION_IP=$(./scripts/run_terraform.sh \
 KEY_NAME="tw-dataeng-${COHORT}"
 PRIVATE_KEY_FILE=$HOME/.ssh/$KEY_NAME
 
+echo "====Generating SSH config===="
+
 cat >> $CONFIG_FILE << EOF
 Host bastion *.${COHORT}.training
     IdentityFile ${PRIVATE_KEY_FILE}
@@ -44,4 +46,5 @@ Host bastion.${COHORT}.training
 
 EOF
 
+echo "====Storing SSH Config===="
 echo appended configuration to "${CONFIG_FILE}"
