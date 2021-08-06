@@ -73,7 +73,7 @@ jobs:
       - checkout
       - run:
           command: source /okta_venv/bin/activate;
-            ./scripts/set_kafka_retention_period.sh
+            ./scripts/set_kafka_retention_period.sh $TRAINING_COHORT
 
 
 workflows:
