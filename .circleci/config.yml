@@ -75,6 +75,29 @@ jobs:
           command: source /okta_venv/bin/activate;
             ./scripts/set_kafka_retention_period.sh $BASTION_PUBLIC_IP $TRAINING_COHORT;
 
+  destroyEMRCluster:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          command: source /okta_venv/bin/activate;
+            ./scripts/run_terraform.sh $TRAINING_COHORT training_emr_cluster destroy -input=false -auto-approve -var-file=prod-env.tfvars;
+
+  planEMRCluster:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          command: source /okta_venv/bin/activate;
+            ./scripts/run_terraform.sh $TRAINING_COHORT training_emr_cluster plan -input=false -var-file=prod-env.tfvars;
+
+  applyEMRCluster:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          command: source /okta_venv/bin/activate;
+            ./scripts/run_terraform.sh $TRAINING_COHORT training_emr_cluster apply -input=false -auto-approve -var-file=prod-env.tfvars;
 
 workflows:
   version: 2
@@ -129,3 +152,22 @@ workflows:
       - setKafkaRetentionPeriodTo3h:
           requires:
             - approveSetKafkaRetentionPeriodTo3h
+
+
+      - approveDestroyEMRCluster:
+          type: approval
+          requires:
+            - dummy
+      - destroyEMRCluster:
+          requires:
+            - approveDestroyEMRCluster
+      - planEMRCluster:
+          requires:
+            - destroyEMRCluster
+      - approveApplyEMRCluster:
+          type: approval
+          requires:
+            - planEMRCluster
+      - applyEMRCluster:
+          requires:
+            - approveApplyEMRCluster
