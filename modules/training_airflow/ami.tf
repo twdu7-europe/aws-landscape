@@ -1,16 +1,9 @@
-data "aws_ami" "amazon_linux_2" {
+data "aws_ami" "training_airflow" {
   most_recent = true
-  owners      = ["amazon"]
-
-
-  filter {
-    name   = "owner-alias"
-    values = ["amazon"]
-  }
-
+  owners      = ["self"]
 
   filter {
     name   = "name"
-    values = ["amzn2-ami-hvm-2.0.*-x86_64-gp2"]
+    values = ["data-eng-airflow-training-*"]
   }
 }
