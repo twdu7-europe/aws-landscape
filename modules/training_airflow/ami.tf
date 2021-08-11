@@ -1,9 +1,16 @@
-data "aws_ami" "training_airflow" {
+data "aws_ami" "amazon_linux_2" {
   most_recent = true
-  owners      = ["self"]
+  owners      = ["amazon"]
+
+
+  filter {
+    name   = "owner-alias"
+    values = ["amazon"]
+  }
+
 
   filter {
     name   = "name"
-    values = ["data-eng-airflow-training-*"]
+    values = ["data-eng-kafka-training-*"]
   }
 }
