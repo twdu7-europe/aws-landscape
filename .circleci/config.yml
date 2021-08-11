@@ -195,7 +195,7 @@ workflows:
             - dummy
       - buildAirflowAMI:
           requires:
-            - approveBuildAirflowAMI\
+            - approveBuildAirflowAMI
 
       - approveDestroyAirflow:
           type: approval
