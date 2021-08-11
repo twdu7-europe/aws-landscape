@@ -38,7 +38,7 @@ aws rds create-db-instance \
     --db-instance-identifier ${DB_INSTANCE_ID} \
     --db-subnet-group-name ${COHORT}-bootstrap-db-subnet-group \
     --allocated-storage 30 \
-    --db-instance-class db.t2.micro \
+    --db-instance-class db.t3.micro \
     --storage-type gp2 \
     --engine postgres \
     --master-username ${DB_NAME} \
