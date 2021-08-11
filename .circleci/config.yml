@@ -31,6 +31,7 @@ jobs:
             ./scripts/run_terraform.sh $TRAINING_COHORT training_bucket apply -input=false -auto-approve;
             ./scripts/run_terraform.sh $TRAINING_COHORT training_emr_cluster apply -input=false -auto-approve -var-file=prod-env.tfvars;
             ./scripts/run_terraform.sh $TRAINING_COHORT training_kafka apply -input=false -auto-approve -var-file=prod-env.tfvars;
+            ./scripts/run_terraform.sh $TRAINING_COHORT training_airflow apply -input=false -auto-approve;
             ./scripts/run_terraform.sh $TRAINING_COHORT ingester apply -input=false -auto-approve -var-file=prod-env.tfvars;
             ./scripts/run_terraform.sh $TRAINING_COHORT monitoring_dashboard apply -input=false -auto-approve;
             ./scripts/run_terraform.sh $TRAINING_COHORT client_vpn apply -input=false -auto-approve;
