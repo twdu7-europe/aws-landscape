@@ -13,7 +13,7 @@ if [ $# -eq 0 ]; then
 fi
 
 BASTION_PUBLIC_IP=$1
-TRAINING_COHORT=twdu7-europe
+TRAINING_COHORT=$2
 
 echo "====TRAINING_COHORT===="
 echo ${TRAINING_COHORT}

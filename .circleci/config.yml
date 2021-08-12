@@ -94,8 +94,7 @@ jobs:
           fingerprints:
             - "f0:79:be:b9:24:6d:88:1b:0a:d3:fb:b3:8f:55:9c:bb"
       - run:
-          command: source /okta_venv/bin/activate;
-            ./scripts/set_kafka_retention_period.sh $BASTION_PUBLIC_IP $TRAINING_COHORT;
+          command: ./scripts/set_kafka_retention_period.sh $BASTION_PUBLIC_IP $TRAINING_COHORT;
 
   destroyEMRCluster:
     <<: *defaults
