@@ -5,6 +5,9 @@ set -xe
 BASTION_PUBLIC_IP=$1
 TRAINING_COHORT=$2
 
+echo "====TRAINING_COHORT===="
+echo ${TRAINING_COHORT}
+
 echo "====Updating SSH Config===="
 
 echo "
@@ -34,7 +37,7 @@ Host bastion.${TRAINING_COHORT}.training
 echo "====SSH Config Updated===="
 
 echo "====Updating Kafka Properties===="
-ssh kafka.${TRAINING_COHORT}.training <<EOF
+ssh -T kafka.${TRAINING_COHORT}.training <<EOF
 set -e
 sudo su root
 mkdir -p /data/kafka
