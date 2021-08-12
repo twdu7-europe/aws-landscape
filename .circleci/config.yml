@@ -90,7 +90,7 @@ jobs:
       - checkout
       - run:
           command: source /okta_venv/bin/activate;
-            ./scripts/set_kafka_retention_period.sh $BASTION_PUBLIC_IP $TRAINING_COHORT;
+            ./scripts/set_kafka_retention_period.sh $TRAINING_COHORT;
 
   destroyEMRCluster:
     <<: *defaults
