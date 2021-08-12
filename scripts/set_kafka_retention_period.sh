@@ -35,6 +35,7 @@ echo "====SSH Config Updated===="
 
 echo "====Updating Kafka Properties===="
 ssh kafka.${TRAINING_COHORT}.training <<EOF
+set -e
 sudo su root
 mkdir -p /data/kafka
 systemctl stop confluent-kafka
