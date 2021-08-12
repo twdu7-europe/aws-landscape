@@ -2,14 +2,8 @@
 
 set -xe
 
-TRAINING_COHORT=$1
-
-BASTION_PUBLIC_IP=$(./scripts/run_terraform.sh \
-    TRAINING_COHORT bastion \
-    output bastion_ip_address)
-
-echo "====BASTION_PUBLIC_IP===="
-echo ${BASTION_PUBLIC_IP}
+BASTION_PUBLIC_IP=$1
+TRAINING_COHORT=$2
 
 echo "====Updating SSH Config===="
 
@@ -45,7 +39,7 @@ sudo su root
 mkdir -p /data/kafka
 systemctl stop confluent-kafka
 systemctl stop confluent-zookeeper
-sed -i -e 's/log.retention.hours=168/log.retention.hours=1/g' /etc/kafka/server.properties
+sed -i -e 's/log.retention.hours=168/log.retention.hours=3/g' /etc/kafka/server.properties
 systemctl start confluent-zookeeper
 systemctl start confluent-kafka
 EOF
