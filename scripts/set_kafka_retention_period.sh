@@ -2,6 +2,16 @@
 
 set -xe
 
+usage() {
+    echo "Script to set Kafka retention period"
+    echo "./set_kafka_retention_period.sh BASTION_PUBLIC_IP TRAINING_COHORT"
+}
+
+if [ $# -eq 0 ]; then
+    usage
+    exit 1
+fi
+
 BASTION_PUBLIC_IP=$1
 TRAINING_COHORT=$2
 
@@ -37,7 +47,7 @@ Host bastion.${TRAINING_COHORT}.training
 echo "====SSH Config Updated===="
 
 echo "====Updating Kafka Properties===="
-ssh -T kafka.${TRAINING_COHORT}.training <<EOF
+ssh kafka.${TRAINING_COHORT}.training <<EOF
 set -e
 sudo su root
 mkdir -p /data/kafka
