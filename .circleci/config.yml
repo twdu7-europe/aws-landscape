@@ -114,7 +114,7 @@ jobs:
       - checkout
       - run:
           command: source /okta_venv/bin/activate;
-            ./scripts/run_terraform.sh $TRAINING_COHORT monitoring_dashboard destroy -input=false -auto-approve -var-file=prod-env.tfvars;
+            ./scripts/run_terraform.sh $TRAINING_COHORT monitoring_dashboard destroy -input=false -auto-approve;
 
   planMonitoringDashboard:
     <<: *defaults
@@ -122,7 +122,7 @@ jobs:
       - checkout
       - run:
           command: source /okta_venv/bin/activate;
-            ./scripts/run_terraform.sh $TRAINING_COHORT monitoring_dashboard plan -input=false -var-file=prod-env.tfvars;
+            ./scripts/run_terraform.sh $TRAINING_COHORT monitoring_dashboard plan -input=false;
 
   applyMonitoringDashboard:
     <<: *defaults
@@ -130,7 +130,7 @@ jobs:
       - checkout
       - run:
           command: source /okta_venv/bin/activate;
-            ./scripts/run_terraform.sh $TRAINING_COHORT monitoring_dashboard apply -input=false -auto-approve -var-file=prod-env.tfvars;
+            ./scripts/run_terraform.sh $TRAINING_COHORT monitoring_dashboard apply -input=false -auto-approve;
 
 workflows:
   version: 2
